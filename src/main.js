@@ -1,1 +1,1 @@
-console.log("Tailwind + Vite funcionando!");
+import './style.css';

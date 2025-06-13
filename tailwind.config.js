@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./*.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html",
+    "./cardapio.html",  
+    "./sobre.html",
+    "./contato.html",  
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {fontFamily: {
         cookie: ['Cookie', 'cursive'],
