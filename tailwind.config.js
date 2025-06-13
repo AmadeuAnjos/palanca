@@ -4,6 +4,7 @@ module.exports = {
     "./cardapio.html",  
     "./sobre.html",
     "./contato.html",  
+    "./admin.html",  
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {

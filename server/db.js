@@ -11,4 +11,25 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
-module.exports = pool;
+// Criar tabela de mensagens se não existir
+async function initializeDatabase() {
+  try {
+    const connection = await pool.getConnection();
+    await connection.query(`
+      CREATE TABLE IF NOT EXISTS messages (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL,
+        message TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+    connection.release();
+    console.log('Banco de dados MySQL conectado e tabela verificada');
+  } catch (err) {
+    console.error('Erro ao conectar ao MySQL:', err);
+    process.exit(1);
+  }
+}
+
+module.exports = { pool, initializeDatabase };

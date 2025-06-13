@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Palanca Negra Café</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="/src/styles.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .message-enter {
+        animation: messageEnter 0.3s ease-out;
+      }
+      @keyframes messageEnter {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-gray-800 text-white shadow-md">
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <h1 class="text-2xl font-bold">
+          <i class="fas fa-lock mr-2"></i>Painel Administrativo
+        </h1>
+        <a href="/" class="text-white hover:text-gray-300 flex items-center">
+          <i class="fas fa-home mr-2"></i> Voltar ao Site
+        </a>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- Título e Controles -->
+        <div class="border-b p-6">
+          <h2 class="text-xl font-bold flex items-center">
+            <i class="fas fa-envelope mr-2"></i> Mensagens Recebidas
+          </h2>
+          <div class="mt-4 flex flex-col md:flex-row gap-4">
+            <div class="relative flex-grow">
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Pesquisar..."
+                class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+            </div>
+            <select
+              id="sortSelect"
+              class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="newest">Mais recentes</option>
+              <option value="oldest">Mais antigas</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Lista de Mensagens -->
+        <div id="messagesContainer" class="divide-y">
+          <!-- Loading State -->
+          <div class="text-center py-12">
+            <i class="fas fa-spinner fa-spin text-3xl text-blue-500"></i>
+            <p class="mt-4 text-gray-600">Carregando mensagens...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal de Confirmação -->
+    <div
+      id="confirmModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+    >
+      <div
+        class="bg-white rounded-lg overflow-hidden w-full max-w-md mx-4 shadow-xl"
+      >
+        <div class="p-6 text-center">
+          <div
+            class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100"
+          >
+            <i class="fas fa-exclamation-triangle text-yellow-500 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-medium text-gray-900 mt-3">
+            Confirmar Exclusão
+          </h3>
+          <div class="mt-2">
+            <p class="text-sm text-gray-500">
+              Tem certeza que deseja excluir esta mensagem? Esta ação não pode
+              ser desfeita.
+            </p>
+          </div>
+        </div>
+        <div class="bg-gray-50 px-4 py-3 flex justify-end">
+          <button
+            id="cancelDelete"
+            type="button"
+            class="mr-3 px-4 py-2 text-gray-700 hover:text-gray-500"
+          >
+            Cancelar
+          </button>
+          <button
+            id="confirmDelete"
+            type="button"
+            class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+          >
+            Excluir
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notificação -->
+    <div
+      id="notification"
+      class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg hidden"
+    >
+      <div class="flex items-center">
+        <i class="fas fa-check-circle mr-2"></i>
+        <span id="notificationText"></span>
+      </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+  </body>
+</html>
