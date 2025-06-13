@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run copy-pages",
-    "copy-pages": "copy sobre.html dist\\sobre.html && copy cardapio.html dist\\cardapio.html && copy contato.html dist\\contato.html",
+    "build": "vite build && npm run cp-pages",
+    "copy-pages": "cp sobre.html dist\\sobre.html && cp cardapio.html dist\\cardapio.html && cp contato.html dist\\contato.html",
     "preview": "vite preview"
   },
   "devDependencies": {
